@@ -38,13 +38,8 @@ void main() {
   int nextCascadeIndex = currentCascadeLevel + 1;
 
   if (nextCascadeIndex <= lastCascadeIndex) {
-#if defined(RADIANCE_MERGE_13TAP)
-    vec4 radianceSample = SampleMergedRadiance_13tap(
-        pixelIndex, angleRadians, nextCascadeIndex);
-#else
     vec4 radianceSample = SampleMergedRadiance_Bilinear(
         nextCascadeMergedTexture, pixelIndex, angleRadians, nextCascadeIndex);
-#endif
 
     radiance.rgb += radianceSample.rgb * radiance.a;
     radiance.a *= radianceSample.a;
