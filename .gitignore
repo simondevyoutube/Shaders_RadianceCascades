@@ -1,0 +1,4 @@
+node_modules
+dist
+#dont lock for now, untill things are working
+package-lock.json 
