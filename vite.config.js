@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import wasm from 'vite-plugin-wasm';
 import topLevelAwait from 'vite-plugin-top-level-await';
 import solidPlugin from 'vite-plugin-solid';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,7 +19,15 @@ export default defineConfig({
                 });
               }
             }
-        }
+        },
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'shaders/*.glsl',
+                    dest: 'shaders'
+                }
+            ]
+        })
     ],
     resolve: {
         alias: {
